@@ -1,16 +1,113 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>the Entropic package manager</title>
-</head>
-<body>
-  <h1>the Entropic package manager</h1>
-  <p>Entropic sure has a fast, sophisticated web site, doesn't it?</p>
-  <p>Well, it's fast, anyway. You probably want to go to 
-  <a href="https://github.com/entropic-dev/entropic">Github</a> and 
-  read the source instead of this.</a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>The Entropic Package Manager</title>
+    <link href="tailwind.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito:400,700|Varela+Round&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="bg-gray-200">
+    <div
+      class="shadow-lg flex items-stretch justify-center gradient px-4 md:px-0"
+    >
+      <div class="flex flex-col items-center justify-center -mt-24">
+        <h1 class="text-white text-4xl uppercase tracking-widest">
+          Entropic
+        </h1>
+        <h4 class="mt-4 text-white uppercase tracking-widest text-center">
+          A federated package registry for anything
+        </h4>
+        <a href="https://github.com/entropic-dev/entropic">
+          <svg
+            class="mt-4 w-8 h-8 fill-current text-white"
+            role="img"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>GitHub icon</title>
+            <path
+              d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+            />
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div class="container mx-auto -mt-24 px-4 md:px-0">
+      <div class="rounded bg-white shadow-lg p-12 leading-relaxed text-lg mb-6">
+        <h1 class="text-2xl mb-6">What is Entropic?</h1>
+        <p>
+          A new package registry with a new CLI, designed to be easy to stand up
+          inside your network. Entropic features an entirely new file-centric
+          API and a content-addressable storage system that attempts to minimize
+          the amount of data you must retrieve over a network. This file-centric
+          approach also applies to the publication API. See the API section of
+          the manifesto for more details about the API offered.<br /><br />
 
-  <p>Or maybe you'd like to <a href="https://github.com/entropic-dev/www.entropic.dev">make this website better</a>!</p>
-</body>
+          Entropic assumes many registries co-existing and interoperating as a
+          part of your normal workflow. All Entropic packages are namespaced,
+          and a full Entropic package spec also includes the hostname of its
+          registry.<br /><br />
+
+          The legacy node package manager is treated as a read-only archive. You
+          may install legacy packages through your Entropic home instance.
+        </p>
+      </div>
+      <div class="rounded bg-white shadow-lg p-12 leading-relaxed text-lg">
+        <h1 class="text-2xl mb-6">Overview</h1>
+        <p>
+          Package specifications are fully qualified with the namespace,
+          hostname, and package name. They look like this:
+          <code>namespace@example.com/pkg-name</code>. For example, the ds cli
+          is specified by <code>chris@entropic.dev/ds</code>.<br /><br />
+
+          If you publish a package to your local registry that depends on
+          packages from other registries, your local instance will proactively
+          mirror all the packages yours depends on. The goal is to keep each
+          instance entirely self-sufficient, so installs don't have to depend on
+          a resource that might vanish. This is also true of packages installed
+          from the legacy node package manager: they're given the namespace
+          <code>legacy</code> and mirrored.<br /><br />
+
+          Abandoned packages are moved to the
+          <code>abandonware</code> namespace.<br /><br />
+
+          Every Entropic user has a namespace that matches their user name. They
+          may additionally belong to other namespaces. Packages can be updated
+          by any user in the package's namespace. Packages can also have a list
+          of maintainers.<br /><br />
+
+          For example, user <code>chris</code> owns the package
+          <code>chris@entropic.dev/ds</code>. Chris can invite
+          <code>ceejbot</code> to maintain <code>ds</code>. If ceejbot accepts,
+          they'll be able to publish new versions of <code>ds</code>. Meanwhile,
+          the package <code>lodash-people@entropic.dev/lodash</code> can be
+          maintained by anybody who's a member of the
+          <code>lodash-people</code> namespace. This might include the user
+          <code>jdalton</code> and anybody else <code>jdalton</code> invites.
+          (We hear that jdd gets a dollar every time somebody uses lodash as an
+          example.)<br /><br />
+
+          All packages published to Entropic are public. Our expectation is that
+          you'll use something like the GitHub Package Registry if you need to
+          control access to packages you publish. Or you might choose to run an
+          Entropic instance and control access to it another way.<br /><br />
+
+          The only thing about Entropic that assumes you're managing javascript
+          packages is the installer. We are open to adding other kinds of
+          installers for other languages.
+        </p>
+      </div>
+      <div
+        class="text-center my-12 text-xs uppercase tracking-widest text-gray-500"
+      >
+        Copyright &copy; 2019-2020 The Entropic Authors
+      </div>
+    </div>
+  </body>
 </html>

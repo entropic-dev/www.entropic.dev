@@ -1,0 +1,19 @@
+body {
+  font-family: "Nunito", sans-serif;
+}
+h1,
+h4 {
+  font-family: "Varela Round", sans-serif;
+}
+.gradient {
+  height: 25rem;
+  background: #ff5f6d;
+  background: -webkit-linear-gradient(to right, #ffc371, #ff5f6d);
+  background: linear-gradient(to right, #ffc371, #ff5f6d);
+}
+
+code {
+  background: #edf2f7;
+  padding: 0.15rem;
+  border-radius: 0.35rem;
+}
