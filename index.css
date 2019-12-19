@@ -1,0 +1,29 @@
+* {
+  font-family: sans-serif;
+}
+
+body {
+  margin: auto;
+}
+
+#background {
+  background-color: #78C3FB;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#background img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#description {
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+}
