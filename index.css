@@ -3,18 +3,17 @@
 }
 
 body {
-  margin: auto;
-}
-
-#background {
   background-color: #78C3FB;
+  margin: auto;
+  background-color: #78C3FB;
+  background-attachment: fixed;
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-#background img {
+img {
   width: 100%;
   max-width: 400px;
   height: auto;
